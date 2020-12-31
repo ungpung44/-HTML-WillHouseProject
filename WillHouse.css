@@ -1,0 +1,76 @@
+.TitleUpper
+{
+  border: 0;
+  height: 3px;
+  background: rgb(102,102,102);
+}
+
+.TitleLower
+{
+  border: 0;
+  height: 3px;
+  background: rgb(102,102,102);
+}
+
+.mic
+{
+  text-align: center;
+}
+
+.light
+{
+  text-align: center;
+}
+
+.micdesc
+{
+  font-family: fantasy;
+  text-align: center;
+}
+
+.highlight1
+{
+  font-family: fantasy;
+  color: rgb(255,0,0);
+  font-weight: bolder;
+}
+
+.highlight2
+{
+  font-family: fantasy;
+  color: rgb(255,0,0);
+  font-weight: bolder;
+}
+
+.lightdesc
+{
+  font-family: fantasy;
+  text-align: center;
+}
+
+.highlight3
+{
+  font-family: fantasy;
+  color: rgb(255,0,0);
+  font-weight: bolder;
+}
+
+.highlight4
+{
+  font-family: fantasy;
+  color: rgb(255,0,0);
+  font-weight: bolder;
+}
+
+body
+{
+  background: rgb(204,204,204);
+}
+
+h1
+{
+  font-family: fantasy;
+  text-align: center;
+  font-weight: bolder;
+  background: rgb(255,255,255);
+}

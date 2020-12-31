@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="utf-8"/>
+<head>
+  <title>윌하우스 프로젝트</title>
+  <link rel="stylesheet" type="text/css" href="WillHouse.css">
+</head>
+<script type="text/javascript" src="MQTT.js"></script>
+<script type="text/javascript">
+
+var flagOne = 0;
+var flagTwo = 0;
+var flagThree = 0;
+var resultOne = 0;
+var resultTwo = 0;
+var resultThree = 0;
+var message = '';
+var test = 'hello';
+// When Using Another Brower only Chrome Browser.
+if (!('webkitSpeechRecognition' in window))
+{
+  alert("크롬 브라우저를 이용하세요.\nUSE CHROME BROWSER.");
+}
+
+var recognition = new webkitSpeechRecognition();
+recognition.continuous = true;
+recognition.interimResults = true;
+recognition.lang = "ko-KR";
+recognition.onresult = function(event)
+{
+  // During the Recognition Works. (Not Required)
+  var interimTranscript = '';
+  // Final Message. (Required)
+  var finalTranscript = '';
+  for (var i=event.resultIndex; i<event.results.length; ++i)
+  {
+    if (event.results[i].isFinal)
+    {
+      finalTranscript += event.results[i][0].transcript;
+      message = finalTranscript;
+      console.log(message)
+    }
+    else
+    {
+      interimTranscript += event.results[i][0].transcript;
+    }
+  }
+}
+
+// when Mic Button Clicked.
+function toggleMicrophone()
+{
+  console.log("MIC Button Clicked");
+  // Start Recognition..
+  recognition.start();
+}
+
+// when Light01 Button Clicked.
+function toggleLIGHTONE()
+{
+  flagOne++;
+  resultOne = flagOne % 2;
+  if (resultOne % 2 > 0)
+  {
+    console.log("LIGHTONE ON");
+  }
+  else
+  {
+    console.log("LIGHTONE OFF");
+  }
+}
+// when Light02 Button Clicked.
+function toggleLIGHTTWO()
+{
+  flagTwo++;
+  resultTwo = flagTwo % 2;
+  if (flagTwo % 2 > 0)
+  {
+    console.log("LIGHTTWO ON");
+  }
+  else
+  {
+    console.log("LIGHTTWO OFF");
+  }
+}
+// when Light03 Button Clicked.
+function toggleLIGHTTHREE()
+{
+  flagThree++;
+  resultThree = flagThree % 2;
+  if (resultThree % 2 > 0)
+  {
+    console.log("LIGHTTHREE ON");
+  }
+  else
+  {
+    console.log("LIGHTTHREE OFF");
+  }
+}
+
+</script>
+
+<body>
+  <h1><hr class = "TitleUpper">윌.하.우.스 프로젝트<br>WillHouse Project<hr class = "TitleLower"></h1>
+  <p>
+    <div class="mic">
+      <button type="Microphone" class="btn_imageMicrophone" id="MICROPHONE" onclick=toggleMicrophone()>
+        <img src="img/Microphone.png" alt="Microphone.png">
+      </button>
+    </div>
+    <div class= "micdesc">
+      음성인식을 위해서 <span class="highlight1">마이크 버튼</span>을 클릭하세요.
+      <br>Use <span class="highlight2">Microphone Button</span> to Speech Recognition.
+    </div>
+    <div class="light">
+      <br>
+      <button type="LightOne" class="btn_imageLightOne" id="LIGHTONE" onclick=toggleLIGHTONE()>
+        <img src="img/Light.png" alt="Light.png">
+      </button>
+      <button type="LightTwo" class="btn_imageLightTwo" id="LIGHTTWO" onclick=toggleLIGHTTWO()>
+        <img src="img/Light.png" alt="Light.png">
+      </button>
+      <button type="LightThree" class="btn_imageLightThree" id="LIGHTTHREE" onclick=toggleLIGHTTHREE()>
+        <img src="img/Light.png" alt="Light.png">
+      </button>
+    </div>
+    <div class= "lightdesc">
+      수동조작을 위해서 <span class="highlight3">전구 버튼</span>을 클릭하세요.
+      <br>Use each <span class="highlight4">Lightbulb Button</span> to Manual Control.
+    </div>
+  </p>
+</body>
+</html>
